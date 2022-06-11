@@ -37,6 +37,8 @@ public class Course {
 	private String level;
 	@OneToMany(cascade = CascadeType.ALL,targetEntity = Group.class)
 	Set<Group>groups;
+	@OneToMany(cascade = CascadeType.ALL,targetEntity = Area.class)
+	Set<Area>areas;
 	
 	public Course() {
 		super();

@@ -39,7 +39,7 @@ public class GroupServiceImpl implements GroupService{
 
 	@Override
 	public GroupDto saveGroup(GroupDto group) {
-		
+		//TODO:check problem with coruseConverter
 		try {
 			CourseDto courseDto=this.courseServiceImpl.getOneCourse(group.getCourseId());
 			System.out.println(this.courseConverter);

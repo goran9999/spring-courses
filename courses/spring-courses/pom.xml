@@ -11,8 +11,12 @@
 	<artifactId>demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>spring-coruses-app</name>
+	
 	<description>Demo project for Spring Boot</description>
 	<properties>
+	
+    <start-class>rs.fon.silab.SpringCoursesAppApplicaton</start-class>
+
 		<java.version>11</java.version>
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
 	</properties>
