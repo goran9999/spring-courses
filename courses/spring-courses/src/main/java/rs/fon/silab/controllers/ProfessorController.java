@@ -38,7 +38,8 @@ public class ProfessorController {
 	}
 	
 	@PatchMapping("update")
-	ProfessorDto updateProfessor(ProfessorDto professorDto) {
+	ProfessorDto updateProfessor(@RequestBody ProfessorDto professorDto) {
+		System.out.println(professorDto);
 		return this.professorServiceImpl.updateProfessor(professorDto);
 	}
 	

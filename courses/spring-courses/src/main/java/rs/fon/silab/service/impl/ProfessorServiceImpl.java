@@ -91,11 +91,29 @@ public class ProfessorServiceImpl implements ProfessorService {
 	@Override
 	public ProfessorDto updateProfessor(ProfessorDto professor) {
 		try {
-			Professor updatedProfessor=this.professorRepository.save(this.professorConverter.toEntity(professor));
+			Professor updatedProfessor=this.professorRepository.findById(professor.getId()).get();
 			if(updatedProfessor==null) {
-				throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Problem with updating professor");
+				throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 			}
-			return this.professorConverter.toDto(updatedProfessor);
+			updatedProfessor.setId(professor.getId());
+			updatedProfessor.setBithDate(professor.getBirthDate());
+			updatedProfessor.setDegreeLevel(professor.getDegreeLevel());
+			updatedProfessor.setFirstName(professor.getFirstName());
+			updatedProfessor.setLastName(professor.getLastName());
+			List<Group> groups=new ArrayList<>();
+			for (Long groupId:professor.getGroups()) {
+				try {
+					GroupDto foundGroup=this.groupServiceImpl.getGroup(groupId);
+					Group g=this.groupConverter.toEntity(foundGroup);
+					g.setId(foundGroup.getId());
+					groups.add(g);
+				} catch (Exception e) {
+					continue;
+				}
+			}
+			updatedProfessor.setGroups(groups);
+			Professor savedProfessor=this.professorRepository.save(updatedProfessor);
+			return this.professorConverter.toDto(savedProfessor);
 		} catch (Exception e) {
 			throw e;
 		}
