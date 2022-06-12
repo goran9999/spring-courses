@@ -3,10 +3,6 @@ package rs.fon.silab.model;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -36,6 +32,9 @@ public class Group {
 	
 	@ManyToMany
 	List<Professor>professors;
+	
+	@ManyToMany
+	List<Student>students;
 
 	public Group() {
 		super();
