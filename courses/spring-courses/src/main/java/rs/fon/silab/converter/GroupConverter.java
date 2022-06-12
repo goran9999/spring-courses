@@ -11,7 +11,7 @@ public class GroupConverter implements Converter<GroupDto, Group> {
 
 	@Override
 	public GroupDto toDto(Group e) {
-		return new GroupDto(e.getId(),e.getName(),e.getCourse().getId());
+		return new GroupDto(e.getId(),e.getName(),e.getCourse().getId(),e.getCreatedAt(),e.getStudentsCount());
 	}
 
 	@Override

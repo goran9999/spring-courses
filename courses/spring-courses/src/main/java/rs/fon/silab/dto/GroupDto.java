@@ -1,5 +1,6 @@
 package rs.fon.silab.dto;
 
+import java.util.Date;
 import java.util.Objects;
 
 public class GroupDto {
@@ -7,21 +8,42 @@ public class GroupDto {
 	private Long id;
 	private String groupName;
 	private Long courseId;
+	private Date createdAt;
+	private int studentsCount;
 
 	public GroupDto() {
 		super();
+	}	
+	
+	public Date getCreatedAt() {
+		return createdAt;
 	}
 
-	public GroupDto(Long id,String groupName,Long courseId) {
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public int getStudentsCount() {
+		return studentsCount;
+	}
+
+	public void setStudentsCount(int studentsCount) {
+		this.studentsCount = studentsCount;
+	}
+
+	public GroupDto(Long id, String groupName, Long courseId, Date createdAt, int studentsCount) {
 		super();
-		this.id=id;
+		this.id = id;
 		this.groupName = groupName;
-		this.courseId=courseId;
+		this.courseId = courseId;
+		this.createdAt = createdAt;
+		this.studentsCount = studentsCount;
 	}
 
-	
-	
-	
+
+
+
+
 	public Long getId() {
 		return id;
 	}

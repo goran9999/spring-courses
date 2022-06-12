@@ -1,12 +1,17 @@
 package rs.fon.silab.model;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 
 import rs.fon.silab.util.DegreeLevel;
 
@@ -19,8 +24,17 @@ public class Professor {
 	private String lastName;
 	private Date bithDate;
 	private DegreeLevel degreeLevel;
+	@ManyToMany
+	@JoinColumn(name = "group")
+	List<Group>groups;
 	
 	
+	public List<Group> getGroups() {
+		return groups;
+	}
+	public void setGroups(List<Group> groups) {
+		this.groups = groups;
+	}
 	public Professor() {
 		super();
 	}

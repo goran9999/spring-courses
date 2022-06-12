@@ -12,6 +12,13 @@ public class ProfessorDto {
 	private String lastName;
 	private Date birthDate;
 	private DegreeLevel degreeLevel;
+	private Long[] groups;
+	public Long[] getGroups() {
+		return groups;
+	}
+	public void setGroups(Long[] groups) {
+		this.groups = groups;
+	}
 	public ProfessorDto() {
 		super();
 	}

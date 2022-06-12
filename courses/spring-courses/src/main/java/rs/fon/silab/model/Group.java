@@ -1,7 +1,9 @@
 package rs.fon.silab.model;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -30,6 +33,9 @@ public class Group {
 	@ManyToOne
 	@JoinColumn(name = "course")
 	Course course;
+	
+	@ManyToMany
+	List<Professor>professors;
 
 	public Group() {
 		super();
