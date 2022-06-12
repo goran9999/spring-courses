@@ -1,9 +1,13 @@
 package rs.fon.silab.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import rs.fon.silab.converter.CourseConverter;
 import rs.fon.silab.converter.GroupConverter;
@@ -33,8 +37,17 @@ public class GroupServiceImpl implements GroupService{
 
 	@Override
 	public List<GroupDto> getAllGroups() {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			List<Group>groups=this.groupRepository.findAll();
+			List<GroupDto>groupsDto=new ArrayList<>();
+			groups.forEach((group)->{
+				GroupDto dto=this.groupConverter.toDto(group);
+				groupsDto.add(dto);
+			});
+			return groupsDto;
+		} catch (Exception e) {
+			throw e;
+		}
 	}
 
 	@Override
@@ -58,8 +71,15 @@ public class GroupServiceImpl implements GroupService{
 
 	@Override
 	public GroupDto getGroup(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			Optional<Group> group=this.groupRepository.findById(id);
+			if(group.get()==null) {
+				throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Group with given id does not exist!");
+			}
+			return this.groupConverter.toDto(group.get());
+		} catch (Exception e) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Group with given id does not exist!");
+		}
 	}
 
 }

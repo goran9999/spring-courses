@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import rs.fon.silab.dto.GroupDto;
@@ -32,6 +33,11 @@ public class GroupController {
 	 GroupDto saveGroup(@RequestBody GroupDto group) {
 		System.out.println("AAA");
 		return this.groupService.saveGroup(group);
+	}
+	
+	@GetMapping("get")
+	GroupDto getGroup(@RequestParam String id) {
+		return this.groupService.getGroup(Long.valueOf(id));
 	}
 	
 }
