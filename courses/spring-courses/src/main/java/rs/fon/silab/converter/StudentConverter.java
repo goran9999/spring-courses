@@ -1,8 +1,11 @@
 package rs.fon.silab.converter;
 
+import org.springframework.stereotype.Component;
+
 import rs.fon.silab.dto.StudentDto;
 import rs.fon.silab.model.Student;
 
+@Component
 public class StudentConverter implements Converter<StudentDto, Student>{
 
 	@Override

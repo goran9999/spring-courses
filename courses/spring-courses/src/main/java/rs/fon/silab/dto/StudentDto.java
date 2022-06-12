@@ -11,8 +11,17 @@ public class StudentDto {
 	private String lastName;
 	private Date birthDate;
 	private StudentStatus studentStatus;
+	private Long[] groups;
 	
 
+
+	public Long[] getGroups() {
+		return groups;
+	}
+
+	public void setGroups(Long[] groups) {
+		this.groups = groups;
+	}
 
 	public StudentDto() {
 		super();
