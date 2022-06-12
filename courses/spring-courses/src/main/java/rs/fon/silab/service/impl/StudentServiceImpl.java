@@ -43,6 +43,7 @@ public class StudentServiceImpl implements StudentService{
 				try {
 					GroupDto g=this.groupServiceImpl.getGroup(id);
 					Group group=this.groupConverter.toEntity(g);
+					group.setId(g.getId());
 					groups.add(group);
 				} catch (Exception e) {
 					continue;
