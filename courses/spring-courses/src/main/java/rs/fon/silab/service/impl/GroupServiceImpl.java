@@ -59,9 +59,8 @@ public class GroupServiceImpl implements GroupService{
 			//Course course=this.courseConverter.toEntity(courseDto);
 			Group g=this.groupConverter.toEntity(group);
 			//g.setCourse(course);
-			g.setCourse(new Course(courseDto.getId(),
-					courseDto.getCourseName(),
-					courseDto.getSemester(),courseDto.getStartDate(),courseDto.getEndDate(),courseDto.getGroupCount(),courseDto.getLevel()));
+			g.setCourse(new Course(courseDto.getId(), courseDto.getCourseName(), courseDto.getSemester(),
+					courseDto.getStartDate(), courseDto.getEndDate(), courseDto.getImageUrl(),courseDto.getGroupCount(), courseDto.getLevel()));
 			Group savedGroup=this.groupRepository.save(g);
 			return this.groupConverter.toDto(savedGroup);
 		} catch (Exception e) {

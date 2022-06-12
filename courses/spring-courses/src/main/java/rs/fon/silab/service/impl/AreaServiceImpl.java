@@ -54,7 +54,7 @@ public class AreaServiceImpl implements AreaService {
 				throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Course with given id does not exist!");
 			}
 			area.setCourse(new Course(courseDto.getId(), courseDto.getCourseName(), courseDto.getSemester(),
-					courseDto.getStartDate(), courseDto.getEndDate(), courseDto.getGroupCount(), courseDto.getLevel()));
+					courseDto.getStartDate(), courseDto.getEndDate(), courseDto.getImageUrl(),courseDto.getGroupCount(), courseDto.getLevel()));
 			Area savedArea = this.areaRepository.save(area);
 			if (savedArea == null) {
 				throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Problem with saving area");

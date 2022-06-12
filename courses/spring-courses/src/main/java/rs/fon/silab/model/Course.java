@@ -32,6 +32,8 @@ public class Course {
 	private Date startDate;
 	@Column(name="endDate")
 	private Date endDate;
+	@Column(name="imageUrl")
+	private String imageUrl;
 	@Column(name="groupsCount")
 	private int groupsCount;
 	private String level;
@@ -44,17 +46,35 @@ public class Course {
 		super();
 	}
 	
-	public Course(Long id, String courseName, Semester semester, Date startDate, Date endDate, int groupsCount,
-			String level) {
+	
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
+
+
+	public Course(Long id, String courseName, Semester semester, Date startDate, Date endDate, String imageUrl,
+			int groupsCount, String level) {
 		super();
 		this.id = id;
 		this.courseName = courseName;
 		this.semester = semester;
 		this.startDate = startDate;
 		this.endDate = endDate;
+		this.imageUrl = imageUrl;
 		this.groupsCount = groupsCount;
 		this.level = level;
+
 	}
+
+
 
 	public Long getId() {
 		return id;

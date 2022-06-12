@@ -14,6 +14,7 @@ public class CourseDto {
 	private Date startDate;
 	private Date endDate;
 	private String level;
+	private String imageUrl;
 	private int groupCount;
 	
 	
@@ -22,7 +23,7 @@ public class CourseDto {
 	}
 
 
-	public CourseDto(Long id,String courseName, Semester semester, Date startDate, Date endDate, String level, int groupCount) {
+	public CourseDto(Long id,String courseName, Semester semester, Date startDate, Date endDate, String level, int groupCount,String imageUrl) {
 		super();
 		this.id=id;
 		this.courseName = courseName;
@@ -31,11 +32,22 @@ public class CourseDto {
 		this.endDate = endDate;
 		this.level = level;
 		this.groupCount = groupCount;
+		this.imageUrl=imageUrl;
 	}
 
 
 	
 	
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
+
 	public Long getId() {
 		return id;
 	}

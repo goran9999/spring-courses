@@ -21,6 +21,7 @@ public class CourseConverter implements Converter<CourseDto, Course>{
 		dto.setStartDate(e.getStartDate());
 		dto.setId(e.getId());
 		
+		
 		return dto;
 	}
 
