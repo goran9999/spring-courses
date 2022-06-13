@@ -3,6 +3,7 @@ package rs.fon.silab.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -38,6 +39,11 @@ public class GroupController {
 	@GetMapping("get")
 	GroupDto getGroup(@RequestParam String id) {
 		return this.groupService.getGroup(Long.valueOf(id));
+	}
+	
+	@DeleteMapping("delete")
+	boolean deleteGroup(@RequestParam String id) {
+		return this.groupService.deleteGroup(Long.valueOf(id));
 	}
 	
 }

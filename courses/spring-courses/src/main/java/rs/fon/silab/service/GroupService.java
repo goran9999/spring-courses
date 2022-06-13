@@ -12,4 +12,5 @@ public interface GroupService{
 	List<GroupDto> getAllGroups();
 	GroupDto saveGroup(GroupDto group);
 	GroupDto getGroup(Long id);
+	boolean deleteGroup(Long id);
 }

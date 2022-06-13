@@ -81,4 +81,18 @@ public class GroupServiceImpl implements GroupService{
 		}
 	}
 
+	@Override
+	public boolean deleteGroup(Long id) {
+		try {
+			Group g=this.groupRepository.findById(id).get();
+			if(g==null) {
+				throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+			}
+			this.groupRepository.delete(g);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
 }
