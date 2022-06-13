@@ -7,6 +7,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,7 +25,7 @@ public class Professor {
 	private String lastName;
 	private Date bithDate;
 	private DegreeLevel degreeLevel;
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinColumn(name = "group")
 	List<Group>groups;
 	

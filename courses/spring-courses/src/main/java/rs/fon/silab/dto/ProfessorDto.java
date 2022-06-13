@@ -1,8 +1,10 @@
 package rs.fon.silab.dto;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
+import rs.fon.silab.model.Group;
 import rs.fon.silab.util.DegreeLevel;
 
 public class ProfessorDto {
@@ -12,23 +14,24 @@ public class ProfessorDto {
 	private String lastName;
 	private Date birthDate;
 	private DegreeLevel degreeLevel;
-	private Long[] groups;
-	public Long[] getGroups() {
+	private List<GroupDto> groups;
+	public List<GroupDto> getGroups() {
 		return groups;
 	}
-	public void setGroups(Long[] groups) {
+	public void setGroups(List<GroupDto> groups) {
 		this.groups = groups;
 	}
 	public ProfessorDto() {
 		super();
 	}
-	public ProfessorDto(Long id, String firstName, String lastName, Date birthDate, DegreeLevel degreeLevel) {
+	public ProfessorDto(Long id, String firstName, String lastName, Date birthDate, DegreeLevel degreeLevel,List<GroupDto>groups) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.birthDate = birthDate;
 		this.degreeLevel = degreeLevel;
+		this.groups=groups;
 	}
 	public Long getId() {
 		return id;

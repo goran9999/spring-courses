@@ -42,9 +42,9 @@ public class ProfessorServiceImpl implements ProfessorService {
 		try {
 			Professor p=this.professorConverter.toEntity(professor);
 			List<Group> groups=new ArrayList<>();
-			for (Long groupId:professor.getGroups()) {
+			for (GroupDto group:professor.getGroups()) {
 				try {
-					GroupDto foundGroup=this.groupServiceImpl.getGroup(groupId);
+					GroupDto foundGroup=this.groupServiceImpl.getGroup(group.getId());
 					Group g=this.groupConverter.toEntity(foundGroup);
 					g.setId(foundGroup.getId());
 					groups.add(g);
@@ -101,9 +101,9 @@ public class ProfessorServiceImpl implements ProfessorService {
 			updatedProfessor.setFirstName(professor.getFirstName());
 			updatedProfessor.setLastName(professor.getLastName());
 			List<Group> groups=new ArrayList<>();
-			for (Long groupId:professor.getGroups()) {
+			for (GroupDto group:professor.getGroups()) {
 				try {
-					GroupDto foundGroup=this.groupServiceImpl.getGroup(groupId);
+					GroupDto foundGroup=this.groupServiceImpl.getGroup(group.getId());
 					Group g=this.groupConverter.toEntity(foundGroup);
 					g.setId(foundGroup.getId());
 					groups.add(g);
