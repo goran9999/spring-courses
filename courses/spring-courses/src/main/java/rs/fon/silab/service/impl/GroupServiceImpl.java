@@ -54,7 +54,7 @@ public class GroupServiceImpl implements GroupService{
 	public GroupDto saveGroup(GroupDto group) {
 		//TODO:check problem with coruseConverter
 		try {
-			CourseDto courseDto=this.courseServiceImpl.getOneCourse(group.getCourseId());
+			CourseDto courseDto=this.courseServiceImpl.getOneCourse(group.getCourse().getId());
 			System.out.println(this.courseConverter);
 			//Course course=this.courseConverter.toEntity(courseDto);
 			Group g=this.groupConverter.toEntity(group);

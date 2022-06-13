@@ -7,7 +7,7 @@ public class GroupDto {
 
 	private Long id;
 	private String groupName;
-	private Long courseId;
+	private CourseDto course;
 	private Date createdAt;
 	private int studentsCount;
 
@@ -31,11 +31,11 @@ public class GroupDto {
 		this.studentsCount = studentsCount;
 	}
 
-	public GroupDto(Long id, String groupName, Long courseId, Date createdAt, int studentsCount) {
+	public GroupDto(Long id, String groupName, CourseDto course, Date createdAt, int studentsCount) {
 		super();
 		this.id = id;
 		this.groupName = groupName;
-		this.courseId = courseId;
+		this.course = course;
 		this.createdAt = createdAt;
 		this.studentsCount = studentsCount;
 	}
@@ -65,14 +65,15 @@ public class GroupDto {
 		return Objects.hash(groupName);
 	}
 	
-	public Long getCourseId() {
-		return courseId;
+
+
+	public CourseDto getCourse() {
+		return course;
 	}
 
-	public void setCourseId(Long courseId) {
-		this.courseId = courseId;
+	public void setCourse(CourseDto course) {
+		this.course = course;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
