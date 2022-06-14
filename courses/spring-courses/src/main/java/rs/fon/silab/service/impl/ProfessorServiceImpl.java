@@ -119,4 +119,18 @@ public class ProfessorServiceImpl implements ProfessorService {
 		}
 	}
 
+	@Override
+	public boolean deleteProfessor(Long id) {
+		try {
+			Professor p=this.professorRepository.findById(id).get();
+			if(p==null) {
+				return false;
+			}
+			this.professorRepository.delete(p);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
 }

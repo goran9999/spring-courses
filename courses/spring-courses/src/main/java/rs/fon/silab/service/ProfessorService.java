@@ -10,4 +10,5 @@ public interface ProfessorService {
 	List<ProfessorDto> getAllProfessors();
 	ProfessorDto getProfessor(Long id);
 	ProfessorDto updateProfessor(ProfessorDto professor);
+	boolean deleteProfessor(Long id);
 }
