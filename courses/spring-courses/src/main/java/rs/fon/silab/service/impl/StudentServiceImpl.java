@@ -18,31 +18,38 @@ import rs.fon.silab.repository.StudentRepository;
 import rs.fon.silab.service.StudentService;
 
 @Service
-public class StudentServiceImpl implements StudentService{
-	
+public class StudentServiceImpl implements StudentService {
+
 	private final StudentRepository studentRepository;
 	private final GroupServiceImpl groupServiceImpl;
 	private final GroupConverter groupConverter;
-	
+
 	@Autowired
-	public StudentServiceImpl(final StudentRepository studentRepository,final GroupServiceImpl groupServiceImpl,final GroupConverter groupConverter) {
-		this.studentRepository=studentRepository;
-		this.groupServiceImpl=groupServiceImpl;
-		this.groupConverter=groupConverter;
+	public StudentServiceImpl(final StudentRepository studentRepository, final GroupServiceImpl groupServiceImpl,
+			final GroupConverter groupConverter) {
+		this.studentRepository = studentRepository;
+		this.groupServiceImpl = groupServiceImpl;
+		this.groupConverter = groupConverter;
 	}
 
 	@Autowired
 	StudentConverter studentConverter;
-	
+
 	@Override
 	public StudentDto saveStudent(StudentDto studentDto) {
 		try {
-			Student student=this.studentConverter.toEntity(studentDto);
-			List<Group>groups=new ArrayList<>();
-			for(Long id:studentDto.getGroups()) {
+			Student student = this.studentConverter.toEntity(studentDto);
+			List<Group> groups = new ArrayList<>();
+			if (studentDto.getId() != null) {
+				Student existingStudent = this.studentRepository.findById(studentDto.getId()).get();
+				if (existingStudent != null) {
+					throw new ResponseStatusException(HttpStatus.CONFLICT);
+				}
+			}
+			for (GroupDto dto : studentDto.getGroups()) {
 				try {
-					GroupDto g=this.groupServiceImpl.getGroup(id);
-					Group group=this.groupConverter.toEntity(g);
+					GroupDto g = this.groupServiceImpl.getGroup(dto.getId());
+					Group group = this.groupConverter.toEntity(g);
 					group.setId(g.getId());
 					groups.add(group);
 				} catch (Exception e) {
@@ -50,7 +57,7 @@ public class StudentServiceImpl implements StudentService{
 				}
 			}
 			student.setGroups(groups);
-			Student savedStudent=this.studentRepository.save(student);
+			Student savedStudent = this.studentRepository.save(student);
 			return this.studentConverter.toDto(savedStudent);
 		} catch (Exception e) {
 			throw e;
@@ -60,8 +67,8 @@ public class StudentServiceImpl implements StudentService{
 	@Override
 	public boolean deleteStudent(Long id) {
 		try {
-			Student s=this.studentRepository.findById(id).get();
-			if(s==null) {
+			Student s = this.studentRepository.findById(id).get();
+			if (s == null) {
 				throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 			}
 			this.studentRepository.delete(s);
@@ -74,13 +81,13 @@ public class StudentServiceImpl implements StudentService{
 	@Override
 	public List<StudentDto> getStudents() {
 		try {
-			List<Student>students=this.studentRepository.findAll();
-			List<StudentDto>studentsDto=new ArrayList<>();
-			students.forEach((student)->{
-				StudentDto dto=this.studentConverter.toDto(student);
+			List<Student> students = this.studentRepository.findAll();
+			List<StudentDto> studentsDto = new ArrayList<>();
+			students.forEach((student) -> {
+				StudentDto dto = this.studentConverter.toDto(student);
 				studentsDto.add(dto);
 			});
-			return studentsDto;			
+			return studentsDto;
 		} catch (Exception e) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 		}
@@ -89,26 +96,28 @@ public class StudentServiceImpl implements StudentService{
 	@Override
 	public StudentDto updateStudent(StudentDto studentDto) {
 		try {
-			Student student=this.studentRepository.findById(studentDto.getId()).get();
-			if(student==null) {
+
+			Student student = this.studentRepository.findById(studentDto.getId()).get();
+			if (student == null) {
 				throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 			}
 			student.setBirthDate(studentDto.getBirthDate());
 			student.setFirstName(studentDto.getFirstName());
 			student.setLastName(studentDto.getLastName());
 			student.setStudentStatus(studentDto.getStudentStatus());
-			List<Group>groups=new ArrayList<>();
-			for(Long id:studentDto.getGroups()) {
+			List<Group> groups = new ArrayList<>();
+			for (GroupDto dto : studentDto.getGroups()) {
 				try {
-					GroupDto g=this.groupServiceImpl.getGroup(id);
-					Group group=this.groupConverter.toEntity(g);
+					GroupDto g = this.groupServiceImpl.getGroup(dto.getId());
+					Group group = this.groupConverter.toEntity(g);
+					group.setId(g.getId());
 					groups.add(group);
 				} catch (Exception e) {
 					continue;
 				}
 			}
 			student.setGroups(groups);
-			Student savedStudent=this.studentRepository.save(student);
+			Student savedStudent = this.studentRepository.save(student);
 			return this.studentConverter.toDto(savedStudent);
 		} catch (Exception e) {
 			throw e;
@@ -118,8 +127,8 @@ public class StudentServiceImpl implements StudentService{
 	@Override
 	public StudentDto getStudent(Long id) {
 		try {
-			Student student=this.studentRepository.findById(id).get();
-			if(student==null) {
+			Student student = this.studentRepository.findById(id).get();
+			if (student == null) {
 				throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 			}
 			return this.studentConverter.toDto(student);

@@ -1,6 +1,7 @@
 package rs.fon.silab.dto;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 import rs.fon.silab.util.StudentStatus;
 
@@ -11,15 +12,15 @@ public class StudentDto {
 	private String lastName;
 	private Date birthDate;
 	private StudentStatus studentStatus;
-	private Long[] groups;
+	private List<GroupDto> groups;
 	
 
 
-	public Long[] getGroups() {
+	public List<GroupDto> getGroups() {
 		return groups;
 	}
 
-	public void setGroups(Long[] groups) {
+	public void setGroups(List<GroupDto> groups) {
 		this.groups = groups;
 	}
 
@@ -27,13 +28,14 @@ public class StudentDto {
 		super();
 	}
 
-	public StudentDto(Long id, String firstName, String lastName, Date birthDate, StudentStatus studentStatus) {
+	public StudentDto(Long id, String firstName, String lastName, Date birthDate, StudentStatus studentStatus,List<GroupDto>groups) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.birthDate = birthDate;
 		this.studentStatus = studentStatus;
+		this.groups=groups;
 	}
 
 	public Long getId() {
