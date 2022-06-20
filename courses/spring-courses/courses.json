@@ -1,5 +1,5 @@
 [
-  "{\n  \"id\": 1,\n  \"courseName\": \"test1\",\n  \"semester\": \"summer\",\n  \"startDate\": \"Jun 20, 2022, 7:15:21 PM\",\n  \"endDate\": \"Jun 20, 2022, 7:15:21 PM\",\n  \"level\": \"test\",\n  \"groupCount\": 0\n}",
-  "{\n  \"id\": 2,\n  \"courseName\": \"test2\",\n  \"semester\": \"summer\",\n  \"startDate\": \"Jun 20, 2022, 7:15:21 PM\",\n  \"endDate\": \"Jun 20, 2022, 7:15:21 PM\",\n  \"level\": \"test\",\n  \"groupCount\": 0\n}",
-  "{\n  \"id\": 3,\n  \"courseName\": \"test3\",\n  \"semester\": \"summer\",\n  \"startDate\": \"Jun 20, 2022, 7:15:21 PM\",\n  \"endDate\": \"Jun 20, 2022, 7:15:21 PM\",\n  \"level\": \"test\",\n  \"groupCount\": 0\n}"
+  "{\n  \"id\": 1,\n  \"courseName\": \"test1\",\n  \"semester\": \"summer\",\n  \"startDate\": \"Jun 20, 2022, 8:24:24 PM\",\n  \"endDate\": \"Jun 20, 2022, 8:24:24 PM\",\n  \"level\": \"test\",\n  \"groupCount\": 0\n}",
+  "{\n  \"id\": 2,\n  \"courseName\": \"test2\",\n  \"semester\": \"summer\",\n  \"startDate\": \"Jun 20, 2022, 8:24:24 PM\",\n  \"endDate\": \"Jun 20, 2022, 8:24:24 PM\",\n  \"level\": \"test\",\n  \"groupCount\": 0\n}",
+  "{\n  \"id\": 3,\n  \"courseName\": \"test3\",\n  \"semester\": \"summer\",\n  \"startDate\": \"Jun 20, 2022, 8:24:24 PM\",\n  \"endDate\": \"Jun 20, 2022, 8:24:24 PM\",\n  \"level\": \"test\",\n  \"groupCount\": 0\n}"
 ]

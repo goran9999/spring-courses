@@ -81,9 +81,7 @@ public class Course {
 	}
 
 	public void setId(Long id) {
-		if(id==null) {
-			throw new IllegalArgumentException();
-		}
+		
 		this.id = id;
 	}
 
