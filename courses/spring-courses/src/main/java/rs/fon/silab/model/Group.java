@@ -60,6 +60,12 @@ public class Group {
 	}
 
 	public void setId(Long id) {
+		if(id==null) {
+			throw new NullPointerException();
+		}
+		if(id<0) {
+			throw new IllegalArgumentException();
+		}
 		this.id = id;
 	}
 
@@ -68,6 +74,12 @@ public class Group {
 	}
 
 	public void setName(String name) {
+		if(name==null) {
+			throw new NullPointerException();
+		}
+		if(name.trim()=="") {
+			throw new IllegalArgumentException();
+		}
 		this.name = name;
 	}
 
@@ -76,6 +88,9 @@ public class Group {
 	}
 
 	public void setStudentsCount(int studentsCount) {
+		if(studentsCount<0) {
+			throw new IllegalArgumentException();
+		}
 		this.studentsCount = studentsCount;
 	}
 
@@ -92,6 +107,9 @@ public class Group {
 	}
 
 	public void setCourse(Course course) {
+		if(course.getId()==null) {
+			throw new NullPointerException();
+		}
 		this.course = course;
 	}
 

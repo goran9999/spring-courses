@@ -81,14 +81,21 @@ public class Course {
 	}
 
 	public void setId(Long id) {
+		if(id==null) {
+			throw new IllegalArgumentException();
+		}
 		this.id = id;
 	}
 
 	public String getCourseName() {
+		
 		return courseName;
 	}
 
 	public void setCourseName(String courseName) {
+		if(courseName==null || courseName.trim()=="") {
+			throw new IllegalArgumentException();
+		}
 		this.courseName = courseName;
 	}
 
@@ -105,6 +112,9 @@ public class Course {
 	}
 
 	public void setStartDate(Date startDate) {
+		if(startDate==null) {
+			throw new IllegalArgumentException();
+		}
 		this.startDate = startDate;
 	}
 
@@ -113,6 +123,9 @@ public class Course {
 	}
 
 	public void setEndDate(Date endDate) {
+		if(endDate==null || endDate.getTime()<new Date().getTime()) {
+			throw new IllegalArgumentException("End date can not be in past!");
+		}
 		this.endDate = endDate;
 	}
 
@@ -121,6 +134,12 @@ public class Course {
 	}
 
 	public void setGroupsCount(int groupsCount) {
+		if(groupsCount==0) {
+			throw new NullPointerException();
+		}
+		if(groupsCount<0) {
+			throw new IllegalArgumentException();
+		}
 		this.groupsCount = groupsCount;
 	}
 
